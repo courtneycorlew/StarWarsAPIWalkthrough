@@ -1,3 +1,12 @@
 body {
-  background-color:  antiquewhite;
+  background-color:  rgb(18, 179, 53);
+}
+
+
+.btn {
+  border-radius: 0px;
+}
+
+#infoButton {
+  margin-bottom: 5%;
 }
