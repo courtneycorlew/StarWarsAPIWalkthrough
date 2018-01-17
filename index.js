@@ -15,7 +15,6 @@ $(() => {
       for (person of people) {
         console.log(person.name)
       }
-
     })
   })
 })
