@@ -13,15 +13,16 @@ $(() => {
     $('#tableBody').empty()
     loaded = false
     if(!loaded) {
-    $.ajax({
-      type: 'GET',
-      url: 'https://swapi.co/api/people'
-    }).done((res) => {
-      let people = res.results
-      for (p of people) {
-      $('#tableBody').append(createTableRow(p))
-      }
       loaded = true;
+      $.ajax({
+        type: 'GET',
+        url: 'https://swapi.co/api/people'
+      }).done((res) => {
+        let people = res.results
+        for (p of people) {
+        $('#tableBody').append(createTableRow(p))
+        }
+      
     })
     }
   })
@@ -30,15 +31,16 @@ $(() => {
       $('#tableBody').empty()
       loaded = false
     if(!loaded) {
-    $.ajax( {
-      url: 'https://swapi.co/api/planets',
-      type: 'GET'
-    }).done( (data) => {
-      let planets = data.results
-      for (planet of planets){
-        $('#tableBody').append(createPlanetTableRow(planet))
-      } loaded = true;
-      })
+      loaded = true;
+      $.ajax( {
+        url: 'https://swapi.co/api/planets',
+        type: 'GET'
+      }).done( (data) => {
+        let planets = data.results
+        for (planet of planets){
+          $('#tableBody').append(createPlanetTableRow(planet))
+        } 
+        })
     }
   })
 
