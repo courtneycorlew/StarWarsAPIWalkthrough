@@ -3,68 +3,88 @@
 <head>
   <title>Star Wars!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./index.css">
 </head>
 <body>
   <div class="container">
+
+    <!-- Header Section -->
     <div class="row">
       <div class="col">
-          <div class="jumbotron jumbotron-fluid">
-              <div class="container">
-                <h1 class="display-4">Jedi For Life</h1>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Jedi for Life</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="row">
+
+      <!-- Search Column -->
+      <div class="col">
+        <div class="row" id="searchRow">
+          <div class="col">
+            <form id="searchPersonForm">
+              <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Person" id='inputName'>
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-dark">Search</button>
+                </div>
               </div>
-            </div>
-      </div>
-    </div>
-
-    <div class="row" id="buttonRow">
-      <div class="col">
-         <button type="button" class="btn btn-primary btn-lg btn-block btn-dark" id="infoButton">Get People</button> 
-      </div>
-     
-      <div class="col">
-        <button type="button" class="btn btn-primary btn-lg btn-block btn-info" id="clearButton">Clear</button>     
-      </div>
-      <div class="col">
-          <button type="button" class="btn btn-primary btn-lg btn-block btn-dark" id="planetButton">Get Planets</button> 
-       </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-dark" id="personInfoPanel">Search for a person's hair color above!</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-    <div class="row">
+      <!-- Table Column -->
       <div class="col">
-        <table class="table table-dark">
-          <thead id="tableHead">
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Height</th>
-              <th scope="col">Birth Year</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <!-- <tr>
-              <td>Luke Skywalker</td>
-              <td>172</td>
-              <td>19BBY</td>
-            </tr> -->
-          </tbody>
-        </table>
+        <div class="row" id='buttonRow'>
+          <div class="col">
+            <button type="button" class="btn btn-lg btn-block btn-dark" id="infoButton">Get People</button>
+          </div>
+          <div class="col">
+              <button type="button" class="btn btn-lg btn-block btn-dark" id="planetButton">Get Planets</button>
+          </div>
+          <div class="col">
+              <button type="button" class="btn btn-lg btn-block btn-info" id="clearButton">Clear</button>
+          </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="row">
+          <div class="col">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Height</th>
+                  <th scope="col">Birth Year</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
+    
   </div>
-
-
-
-
-
-
-
-
-
-
-
+  
+  
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-<script src="index.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>

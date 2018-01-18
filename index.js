@@ -91,6 +91,14 @@ $(() => {
 
   }
 
+  $('#searchPersonForm').submit((e) => {
+    e.preventDefault()
+    let input = $('#inputName').val()
+    $.get(`https://swapi.co/api/people/?search=${input}`).done((res) => {
+      let person = res.results[0]
+    $('#personInfoPanel').text(`Hair color: ${person.hair_color}`)
+    })
+  })
 })
 
 
