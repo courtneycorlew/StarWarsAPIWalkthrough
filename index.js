@@ -10,6 +10,8 @@ $(() => {
   let loaded = false;
 
   $('#infoButton').click(() => {
+    $('#tableBody').empty()
+    loaded = false
     if(!loaded) {
     $.ajax({
       type: 'GET',
@@ -22,6 +24,31 @@ $(() => {
       loaded = true;
     })
     }
+  })
+
+  $('#planetButton').click( () => {
+      $('#tableBody').empty()
+      loaded = false
+    if(!loaded) {
+    $.ajax( {
+      url: 'https://swapi.co/api/planets',
+      type: 'GET'
+    }).done( (data) => {
+      let planets = data.results
+      for (planet of planets){
+        $('#tableBody').append(createPlanetTableRow(planet))
+      } loaded = true;
+      })
+    }
+  })
+
+  $('#clearButton').click( () => {
+    $('#tableBody').empty()
+    loaded = false
+    $( "th:nth-child(1)" ).replaceWith( "<th>Pick </th>" );
+    $( "th:nth-child(2)" ).replaceWith( "<th>From</th>" );
+    $( "th:nth-child(3)" ).replaceWith( "<th>Above!</th>" );
+
   })
 
   function createTableRow(person) {
@@ -42,26 +69,8 @@ $(() => {
     return row
   }
 
-  $('#clearButton').click( () => {
-    $('#tableBody').empty()
-    loaded = false
-  })
-
-  $('#planetButton').click( () => {
-    if(!loaded) {
-    $.ajax( {
-      url: 'https://swapi.co/api/planets',
-      type: 'GET'
-    }).done( (data) => {
-      let planets = data.results
-      for (planet of planets){
-        $('#tableBody').append(createPlanetTableRow(planet))
-      } loaded = true;
-      })
-    }
-  })
-
   function createPlanetTableRow(planetData) {
+    
       let row = $(`<tr></tr>`) 
       let planetName = $(`<td> ${planetData.name}</td>`)
       let climate = $(`<td>${planetData.climate}</td>`)
@@ -80,15 +89,6 @@ $(() => {
     
 
   }
-
-
-
-
-
-
-
-
-
 
 })
 
