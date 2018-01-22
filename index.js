@@ -6,46 +6,60 @@
 
 $(() => {
 
-  let loaded = false;
+  localStorage.clear()
+  let storedPeople = [];
+  let storedPlanets = [];
+  
+  
+  
 
   $('#infoButton').click(() => {
-    $('#tableBody').empty()
-    loaded = false
-    if(!loaded) {
-      loaded = true;
+    $('#tableBody').empty() 
+    if(!localStorage.getItem('storedPeople')) {
       $.ajax({
         type: 'GET',
         url: 'https://swapi.co/api/people'
       }).done((res) => {
         let people = res.results
         for (p of people) {
+          storedPeople.push({name: p.name, height: p.height, birth_year: p.birth_year})
         $('#tableBody').append(createTableRow(p))
         }
-      
-    })
+        localStorage.setItem('storedPeople', JSON.stringify(storedPeople))
+    }) 
+  }else {
+    for(p of storedPeople) {
+      $('#tableBody').append(createTableRow(p))
     }
+  }
   })
 
   $('#planetButton').click( () => {
       $('#tableBody').empty()
-      loaded = false
-    if(!loaded) {
-      loaded = true;
+      if(!localStorage.getItem('storedPlanets')) {
       $.ajax( {
         url: 'https://swapi.co/api/planets',
         type: 'GET'
       }).done( (data) => {
         let planets = data.results
-        for (planet of planets){
-          $('#tableBody').append(createPlanetTableRow(planet))
+        console.log(planets)
+        for (p of planets){
+          storedPlanets.push({name: p.name, climate: p.climate, population: p.population })
+          $('#tableBody').append(createPlanetTableRow(p))
         } 
+        localStorage.setItem('storedPlanets', JSON.stringify(storedPlanets))
         })
-    }
-  })
+      }
+      else {
+        console.log(storedPlanets)
+        for(p of storedPlanets) {
+          $('#tableBody').append(createPlanetTableRow(p))
+        }
+  }
+})
 
   $('#clearButton').click( () => {
     $('#tableBody').empty()
-    loaded = false
     $( "th:nth-child(1)" ).replaceWith( "<th>Pick </th>" );
     $( "th:nth-child(2)" ).replaceWith( "<th>From</th>" );
     $( "th:nth-child(3)" ).replaceWith( "<th>Above!</th>" );
